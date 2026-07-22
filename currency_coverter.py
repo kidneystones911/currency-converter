@@ -1,8 +1,11 @@
 import requests
 import json
 
+base_currency = "USD"
+target_currency = "BDT"
+
 def get_exchange_rate():
-    url = "https://api.exchangerate-api.com/v4/latest/USD"
+    url = f"https://api.exchangerate-api.com/v4/latest/{base_currency}"
     response = requests.get(url)
     print("Exchange rate fetched!")
 
