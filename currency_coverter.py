@@ -8,6 +8,7 @@ def get_exchange_rate():
     url = f"https://api.exchangerate-api.com/v4/latest/{base_currency}"
     response = requests.get(url)
     print("Exchange rate fetched!")
+    return response.json()
 
 def save_rates(data):
     with open("exchange_rates.json", "w") as f:
@@ -15,4 +16,6 @@ def save_rates(data):
     print("Rates saved!")
 
 if __name__ == "__main__":
-    get_exchange_rate()
+    data = get_exchange_rate()
+    rate = data["rates"].get(target_currency, "N/A")
+    print(f"1 {base_currency} = {rate} {target_currency}")
